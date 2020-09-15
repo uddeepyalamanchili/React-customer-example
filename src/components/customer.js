@@ -2,13 +2,15 @@ import React from 'react';
 import Menu from '../components/Menu'
 import customerService from '../services/customer';
 
-export default function CustomerList() {
+export default function CustomerList(props) {
     var state = { items:customerService.getRecords()};
     return (
         <div style={{marginLeft:'200px'}}>
             <Menu/>
         <h3>Customers</h3>
-
+        <br/>
+        <button onClick = {()=>{props.history.push("/CustomerAdd")}}>Add Customer</button>
+        <br/>
         <br/>
         <table border="1">
           <thead>

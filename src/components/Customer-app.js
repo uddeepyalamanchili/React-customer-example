@@ -1,7 +1,6 @@
 import React from 'react';
-import Menu from '../components/Menu';
+import Menu from './Menu';
 import customerService, { getRecords } from '../services/customer';
-
 
 export default class TodoApp extends React.Component {
   state = { items:customerService.getRecords(), name: '' ,email:'',phone:'',address:'',id:'',buttonlabel:"add customer"};
@@ -68,16 +67,7 @@ export default class TodoApp extends React.Component {
   }
 /*
   handleSubmit(e) {
-    e.preventDefault();
-    if (!this.state.name.length) { //if the string is a null string
-      return;
-    }
-    if (!isNaN(this.state.text)) { //checking the string of the entered text
-      var tempsum = parseInt(this.state.text);
-    }
-    else{
-      var tempsum=0;
-    }
+    
 
     const newItem = {
       name: this.state.name,
