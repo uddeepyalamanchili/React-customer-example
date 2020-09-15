@@ -43,10 +43,13 @@ export default function CustomerList(props) {
                 {item.address}
                 </td>
                 <td>
-                <button onClick={()=>this.editItem(item.id)}>Edit</button>
+                <button onClick={()=>{props.history.push("/CustomerEdit/"+item.id)}}>Edit</button>
                 </td>
                 <td>
-                <button onClick={()=>this.deleteItem(item.id)}>Delete</button>
+                <button onClick={()=>{
+                    customerService.deleteRecord(item.id);
+                    props.history.push("/Customers-seperate");
+                }}>Delete</button>
                 </td>
                 </tr>
             ))}
@@ -54,5 +57,4 @@ export default function CustomerList(props) {
       </table>
       </div>
     );
-
 }
