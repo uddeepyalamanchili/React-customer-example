@@ -8,7 +8,7 @@ export default function CustomerList() {
         <div style={{marginLeft:'200px'}}>
             <Menu/>
         <h3>Customers</h3>
-        <button onClick={()=>{props.history.push('/customer-add'); }}> Add customer</button><br/>
+
         <br/>
         <table border="1">
           <thead>

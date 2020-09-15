@@ -6,7 +6,7 @@ function Menu(){
            <h2>Welcome to React Router Tutorial</h2>
               <Link to={'/home'}>Home</Link> &nbsp;| &nbsp;
               <Link to={'/about'}>About</Link> &nbsp;| &nbsp;
-              <Link to={'/Customers'}>Customers</Link> &nbsp;| &nbsp;
+              <Link to={'/Customers-app'}>Customers-app</Link> &nbsp;| &nbsp;
               <Link to={'/Customers-seperate'}>Customers-seperate</Link>&nbsp;| &nbsp;
               <Link to={'/login'}>Logout</Link>
 

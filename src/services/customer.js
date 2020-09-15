@@ -32,10 +32,10 @@ model.addRecord = function(record){
 	return customers.push(record);
 }
 
-model.deleteRecord = function(record){
+model.deleteRecord = function(id){
 	let temp = [];
 	for (var i = 0; i < customers.length; i++) {
-		if(record.id != customers[i].id){
+		if(id != customers[i].id){
 			temp.push(customers[i]);
 		}
 	}
