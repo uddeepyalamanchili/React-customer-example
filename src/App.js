@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './containers/Home';
+import Login from './containers/Login';
+import About from './containers/About';
+import TodoApp from './components/Todo';
+import Customerlist from './components/customer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <div>
+       
+       <Switch>
+          <Route exact path='/' component={Login} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/home' component={Home} />
+          <Route exact path='/Customers' component={TodoApp} />
+          <Route exact path='/Customers-seperate' component={Customerlist} />
+          <Route exact path='/about' component={About} />
+       </Switch>
     </div>
+ </Router>
   );
 }
-
 export default App;
