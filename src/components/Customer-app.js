@@ -1,9 +1,11 @@
 import React from 'react';
 import Menu from './Menu';
 import customerService, { getRecords } from '../services/customer';
+import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Table } from 'reactstrap';
 
 export default class TodoApp extends React.Component {
-  state = { items:customerService.getRecords(), name: '' ,email:'',phone:'',address:'',id:'',buttonlabel:"add customer"};
+  state = { items:customerService.getRecords(), name: '' ,email:'',phone:'',address:'',id:'',buttonlabel:"Add customer"};
   constructor(_props) {
     super(_props);  
     //Another approach to handle this 
@@ -14,9 +16,9 @@ export default class TodoApp extends React.Component {
   render() {
     return (
       
-      <div style={{marginLeft:'200px'}}>
+      <div style={{marginLeft:'200px',marginRight:'200px'}}>
         <Menu/>
-        <h3>customer app</h3>       
+        <h3>Customer app</h3> <br/>      
         <form onSubmit={this.addUpdateItem}>
           <input type = 'text'
             name = 'name' //adding this extra field to differentiate inputs
@@ -39,9 +41,7 @@ export default class TodoApp extends React.Component {
             value={this.state.address}
             placeholder = "address"
           />&nbsp;&nbsp;
-          <button>
-            {this.state.buttonlabel}
-          </button>
+          <Button color="secondary" size="sm">{this.state.buttonlabel}</Button>
         </form>
         <br/>
         <br/>
@@ -118,7 +118,7 @@ export default class TodoApp extends React.Component {
         phone: '',
         address: '',
         id: '',
-        buttonlabel:"add customer"
+        buttonlabel:"Add customer"
       });
   }
   deleteItem = (id) => { 
@@ -147,33 +147,33 @@ export default class TodoApp extends React.Component {
 class TodoList extends React.Component {
   render() {
     return (
-      <table border="1" cellpadding="7" cellspacing="7" >
-        <caption>Customer Details</caption>
+      <Table striped bordered hover size="sm" >
+        <caption style={{textAlign:"center",captionSide:"top"}}>Customer Details</caption>
         <thead>        
         <tr>
                     <th width="20px">ID</th>
-                    <th width="250px">Name</th>
-                    <th width="220px">Email</th>
+                    <th width="100px">Name</th>
+                    <th width="100px">Email</th>
                     <th width="100px">Phone</th>
-                    <th width="300px">Address</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th width="100px">Address</th>
+                    <th width="50px">Edit</th>
+                    <th width="50px">Delete</th>
          </tr>
         </thead>
         <tbody>
             {this.props.items.map((item) => (
             <tr key={item.id}>
-                <td> {item.id} </td>
+                <th scope="row">{item.id}</th>
                 <td> {item.name} </td>
                 <td> {item.email} </td>
                 <td> {item.phone} </td>
                 <td> {item.address} </td>                 
-                <td> <button onClick = {()=>this.props.editItem(item.id)}>Edit</button> </td>
-                <td> <button onClick = {()=>this.props.deleteItem(item.id)}>Delete</button> </td>
+                <td> <Button color="secondary" size="sm" onClick = {()=>this.props.editItem(item.id)}>Edit</Button> </td>
+                <td><Button color="secondary" size="sm" onClick = {()=>this.props.deleteItem(item.id)}>Delete</Button> </td>
             </tr>
             ))}
           </tbody>
-      </table>     
+      </Table>     
     );
   }
 }

@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import Menu from '../components/Menu'
 import customerService from '../services/customer';
+import { Table, Button } from 'reactstrap';
 
 var apiCustomer = 'http://localhost:4000/api/customer';
 export default function CustomerList(props) {
@@ -48,20 +49,20 @@ export default function CustomerList(props) {
     }
 
     return (
-        <div style={{marginLeft:'200px'}}>
+        <div style={{marginLeft:'200px',marginRight:'200px'}}>
         <Menu/>
         <h3>Customers</h3>
-        <button onClick = {()=>{props.history.push("/CustomerAdd")}}>Add Customer</button>
-        <table border="1">
+        <Button color="secondary" onClick = {()=>{props.history.push("/CustomerAdd")}}>Add Customer</Button><br/><br/>
+        <Table striped bordered hover size="sm">
           <thead>
               <tr>
               <th width="20px">No</th>
-              <th width="250px">Name</th>
-              <th width="220px">Email</th>
-              <th width="100px">Phone</th>
-              <th width="300px">Address</th>
-              <th></th>
-              <th></th>
+              <th width="300px">Name</th>
+              <th width="300px">Email</th>
+              <th width="200px">Phone</th>
+              <th width="250px">Address</th>
+              <th width="100px">Edit</th>
+              <th width="100px">Delete</th>
               </tr>
           </thead>
           <tbody>
@@ -83,17 +84,17 @@ export default function CustomerList(props) {
                 {item.address}
                 </td>
                 <td>
-                <button  onClick={()=>{
-                    props.history.push("/CustomerAdd/"+item.id);
-                    }} >Edit</button>
+                <Button color="secondary" size="sm" onClick = {()=>{
+                    props.history.push("/CustomerAdd/"+item.id);}}>Edit</Button>
                 </td>
                 <td>
-                <button onClick = {()=>doDelete(item)}>Delete</button>
+                <Button color="secondary" size="sm" onClick = {()=>{
+                    doDelete(item);}}>Delete</Button>
                 </td>
                 </tr>
             ))}
           </tbody>
-      </table>
+      </Table>
       </div>
     );
 
