@@ -9,7 +9,6 @@ export default function CustomerList(props) {
     useEffect(()=>{
         if(!init){
             setInit(true);
-
             fetch(apiCustomer)
             .then(res => res.json())
             .then(
@@ -25,6 +24,29 @@ export default function CustomerList(props) {
             )
         }
     });
+
+    var doDelete = (record)=>{
+        fetch(apiCustomer,{
+            method: 'delete',
+            body:JSON.stringify(record),
+            headers: {
+               'Accept': 'application/json',
+               'Content-Type': 'application/json'
+            }
+         }).then(res => res.json())
+         .then(
+            (result) => {
+                setInit(false);
+             },
+             // Note: it's important to handle errors here
+             // instead of a catch() block so that we don't swallow
+             // exceptions from actual bugs in components.
+             (error) => {
+                 //manage error
+             }
+         )
+    }
+
     return (
         <div style={{marginLeft:'200px'}}>
         <Menu/>
@@ -66,7 +88,7 @@ export default function CustomerList(props) {
                     }} >Edit</button>
                 </td>
                 <td>
-                <button onClick={()=>this.deleteItem(item.id)}>Delete</button>
+                <button onClick = {()=>doDelete(item)}>Delete</button>
                 </td>
                 </tr>
             ))}
