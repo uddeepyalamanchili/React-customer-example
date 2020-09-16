@@ -47,7 +47,7 @@ var apiCustomer = 'http://localhost:4000/api/customer';
       var addUpdateCustomer=()=>{
          var methodType = 'post';
          var customer = {name:name,email:email,phone:phone,address:address};
-         if(id!=0){ //for edit
+         if(id!==undefined){ //for edit
             methodType = 'put';
             customer.id = id;
          }
