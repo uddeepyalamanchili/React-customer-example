@@ -6,8 +6,10 @@ import customerService from '../services/customer';
       return (
          <div style={{marginLeft:'20px'}}>
              <Menu/>
-            <h2>Home</h2>
-            <h3>the number of customers in the table : {customerService.getRecords().length}</h3>
+             <div style={{marginLeft:'20px'}}>
+               <h2>Home</h2>
+               <h3>The number of customers in the table : {customerService.getRecords().length}</h3>
+            </div>
          </div>
       );
    }

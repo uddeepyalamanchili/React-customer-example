@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Alert } from 'reactstrap';
    function Login(props) {
       const [email, setEmail] = useState('admin');
       const [password, setPassword] = useState("admin");
@@ -28,7 +29,7 @@ import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap
                </FormGroup>
                <FormGroup check row>
                   <Col sm={{ size: 10, offset: 2 }}>
-                     <Button onClick={()=>{
+                     <Button color = "primary"  onClick={()=>{
                         if(email===password){
                            props.history.push('/Home');
                         }else{
