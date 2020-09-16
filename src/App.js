@@ -8,6 +8,8 @@ import About from './containers/About';
 import CustomerApp from './components/Customer-app';
 import Customerlist from './components/customer';
 import CustomerAdd from './containers/CustomerAdd';
+import Temperature from './containers/Temperature';
+import MathsImport from './containers/Maths';
 
 
 
@@ -23,6 +25,8 @@ function App() {
           <Route exact path='/CustomerEdit/:id' component={TestEditCustomer} />
           <Route exact path='/Customers-app' component={CustomerApp} />
           <Route exact path='/Customers-seperate' component={Customerlist} />
+          <Route exact path='/Temperature' component={Temperature} />
+          <Route exact path='/Maths-import' component={MathsImport} />
           <Route exact path='/Customer-add' component={CustomerAdd} />
           <Route exact path='/about' component={About} />
        </Switch>
