@@ -84,7 +84,7 @@ export default function CustomerList(props) {
                 </td>
                 <td>
                 <button  onClick={()=>{
-                    props.history.push("/customer/edit/"+item.id);
+                    props.history.push("/CustomerAdd/"+item.id);
                     }} >Edit</button>
                 </td>
                 <td>
