@@ -7,7 +7,7 @@ function Menu(){
               <Link to={'/home'}>Home</Link> &nbsp;| &nbsp;
               <Link to={'/about'}>About</Link> &nbsp;| &nbsp;
               <Link to={'/Customers-app'}>Customers-app</Link> &nbsp;| &nbsp;
-              <Link to={'/Customers-seperate'}>Customers-seperate</Link>&nbsp;| &nbsp;
+              <Link to={'/Customers-seperate'}>Customers-from node server</Link>&nbsp;| &nbsp;
               <Link to={'/Temperature'}>Temperature</Link>&nbsp;| &nbsp;
               <Link to={'/login'}>Logout</Link>
 

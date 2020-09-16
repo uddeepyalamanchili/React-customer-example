@@ -1,17 +1,35 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import Menu from '../components/Menu'
 import customerService from '../services/customer';
 
+var apiCustomer = 'http://localhost:4000/api/customer';
 export default function CustomerList(props) {
-    var state = { items:customerService.getRecords()};
+    const [init, setInit] = useState(false);
+    const [customers, setCustomers] = useState([]);
+    useEffect(()=>{
+        if(!init){
+            setInit(true);
+
+            fetch(apiCustomer)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setCustomers(result);
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    //manage error
+                }
+            )
+        }
+    });
     return (
         <div style={{marginLeft:'200px'}}>
-            <Menu/>
+        <Menu/>
         <h3>Customers</h3>
-        <br/>
         <button onClick = {()=>{props.history.push("/CustomerAdd")}}>Add Customer</button>
-        <br/>
-        <br/>
         <table border="1">
           <thead>
               <tr>
@@ -25,7 +43,7 @@ export default function CustomerList(props) {
               </tr>
           </thead>
           <tbody>
-            {state.items.map((item) => (
+            {customers.map((item) => (
             <tr key={item.id}>
                 <td>
                 {item.id}
@@ -43,13 +61,12 @@ export default function CustomerList(props) {
                 {item.address}
                 </td>
                 <td>
-                <button onClick={()=>{props.history.push("/CustomerEdit/"+item.id)}}>Edit</button>
+                <button  onClick={()=>{
+                    props.history.push("/customer/edit/"+item.id);
+                    }} >Edit</button>
                 </td>
                 <td>
-                <button onClick={()=>{
-                    customerService.deleteRecord(item.id);
-                    props.history.push("/Customers-seperate");
-                }}>Delete</button>
+                <button onClick={()=>this.deleteItem(item.id)}>Delete</button>
                 </td>
                 </tr>
             ))}
@@ -57,4 +74,5 @@ export default function CustomerList(props) {
       </table>
       </div>
     );
+
 }
