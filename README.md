@@ -1,3 +1,5 @@
+This project is created to understand different concepts in React and implementing basic CRUD operations using the simulated customer data.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
