@@ -1,5 +1,5 @@
 This project is created to understand different concepts in React and implementing basic CRUD operations using the simulated customer data.
-1. Runs on Port number : 3000
+1. Runs on Port number : 3000; URL: http://localhost:3000/
 2. Yarn Package manager is used in this project
 3. Steps to run 
     1. yarn install - installs the dependencies of the project.
