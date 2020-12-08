@@ -46,7 +46,7 @@ export default class TodoApp extends React.Component {
         <br/>
         <br/>
         <div >
-        <TodoList items={this.state.items} deleteItem = {this.deleteItem} editItem = {this.editItem}/>
+        <TodoList items={this.state.items} deleteItem = {this.deleteItem} editItem = {this.editItem}/>{/*getting the data from the children */}
         </div>
       </div>
     );

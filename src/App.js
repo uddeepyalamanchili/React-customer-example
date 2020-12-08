@@ -8,6 +8,16 @@ import {
   useHistory,
   useLocation
 } from "react-router-dom";
+import Login from './containers/Login';
+import Home from './containers/Home';
+import TestAddCustomer from './containers/testAddcustomer';
+import TestEditCustomer from './containers/testEditcustomer';
+import About from './containers/About';
+import CustomerApp from './components/Customer-app';
+import Customerlist from './components/customer';
+import CustomerAdd from './containers/CustomerAdd';
+import Temperature from './containers/Temperature';
+import MathsImport from './containers/Maths';
 
 // This example has 3 pages: a public page, a protected
 // page, and a login screen. In order to see the protected
@@ -38,18 +48,32 @@ export default function App() {
             <li>
               <Link to="/protected">Protected Page</Link>
             </li>
+            <li>
+              <Link to="/Customers-app">Customers Page</Link>
+            </li>
+            <li>
+              <Link to="/home">Home Page</Link>
+            </li>
           </ul>
 
           <Switch>
             <Route path="/public">
               <PublicPage />
             </Route>
-            <Route path="/login">
-              <LoginPage />
-            </Route>
-            <PrivateRoute path="/protected">
-              <ProtectedPage />
-            </PrivateRoute>
+            <Route path="/login"><LoginPage /></Route>
+            <Route exact path='/about' component={About} />
+            <Route exact path='/home' component={Home} />
+          <PrivateRoute path='/CustomerEdit/:id'><TestEditCustomer/></PrivateRoute>
+          <PrivateRoute path='/Customers-seperate'><Customerlist/></PrivateRoute>
+          <PrivateRoute path='/CustomerAdd'><TestAddCustomer/></PrivateRoute>
+          <PrivateRoute path='/Temperature'><Temperature/></PrivateRoute>
+          <PrivateRoute path='/CustomerAdd/:id'><TestAddCustomer/></PrivateRoute>
+          <PrivateRoute path='/Temperature'><Temperature/></PrivateRoute>
+          <PrivateRoute path='/Maths-import'><MathsImport/></PrivateRoute>
+          <PrivateRoute path='/Customer-add'><CustomerAdd/></PrivateRoute>
+            <PrivateRoute path='/CustomerAdd/:id'><TestAddCustomer/></PrivateRoute>
+            <PrivateRoute path='/Customers-app'><CustomerApp/></PrivateRoute>
+            <PrivateRoute path="/protected"><ProtectedPage /></PrivateRoute>
           </Switch>
         </div>
       </Router>

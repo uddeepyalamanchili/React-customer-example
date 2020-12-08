@@ -2,9 +2,18 @@ import React,{useEffect,useState} from 'react';
 import Menu from '../components/Menu'
 import customerService from '../services/customer';
 import { Table, Button } from 'reactstrap';
-
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Redirect,
+    useHistory,
+    useLocation,props
+  } from "react-router-dom";
 var apiCustomer = 'http://localhost:4000/api/customer';
 export default function CustomerList(props) {
+    let history = useHistory();
     const [init, setInit] = useState(false);
     const [customers, setCustomers] = useState([]);
     useEffect(()=>{
@@ -52,7 +61,7 @@ export default function CustomerList(props) {
         <div style={{marginLeft:'200px',marginRight:'200px'}}>
         <Menu/>
         <h3>Customers</h3>
-        <Button color="secondary" onClick = {()=>{props.history.push("/CustomerAdd")}}>Add Customer</Button><br/><br/>
+        <Button color="secondary" onClick = {()=>{history.push("/CustomerAdd")}}>Add Customer</Button><br/><br/>
         <Table striped bordered hover size="sm">
           <thead>
               <tr>
